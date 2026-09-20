@@ -98,6 +98,13 @@ For an interactive Google Colab notebook walking through a basic design pipeline
 
 > *See [models/rf3/README.md](models/rf3/README.md) for complete documentation.*
 
+### RFOptimization (RFO)
+
+RFOptimization combines RF3 gradient-guided sequence optimization, Boltz-2
+structure prediction, and external ProteinMPNN/LigandMPNN sequence redesign.
+Start with the [RFO project guide](models/rfo/README.md), including the separate
+MPNN installation instructions.
+
 ### ProteinMPNN
 [ProteinMPNN](https://www.science.org/doi/10.1126/science.add2187) and [LigandMPNN](https://www.nature.com/articles/s41592-025-02626-1) are lightweight inverse-folding models which can be use to design diverse sequences for backbones under constrained conditions.
 

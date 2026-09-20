@@ -51,6 +51,11 @@ dependencies = [
 
 
 [project.optional-dependencies]
+rfo = [
+    "biopython>=1.83",
+    "pyyaml>=6.0",
+    "numpy>=1.26",
+]
 rfd3na = [
     "pydantic>=2.8",
 ]
@@ -63,11 +68,13 @@ rf3 = [
     "cuequivariance_torch>=0.6.1; sys_platform == 'linux'",
 ]
 all = [
+    "rc-foundry[rfo]",
     "rc-foundry[rfd3na]",
     "rc-foundry[rfd3]",
     "rc-foundry[rf3]",
 ]
 dev = [
+    "rc-foundry[rfo]",
     # Linters & formatters
     "assertpy",
     "ruff==0.8.3",
@@ -88,6 +95,7 @@ dev = [
     "pre-commit"
 ]
 [project.scripts]
+rfo = "rfo.cli:main"
 rf3 = "rf3.cli:app"
 rfd3 = "rfd3.cli:app"
 rfd3na = "rfd3na.cli:app"
@@ -122,6 +130,7 @@ packages = [
   "models/rfd3/src/rfd3",
   "models/rfd3na/src/rfd3na",
   "models/mpnn/src/mpnn",
+  "models/rfo/src/rfo",
 ]
 
 [tool.hatch.build.targets.wheel.force-include]
@@ -297,7 +306,7 @@ check_untyped_defs = true
 # model's own `models/<MODEL>/tests/` (see AGENTS.PROJECT.md "Test Layout"). The pre-existing
 # cluster-coupled per-model suites are kept out of the gate via `collect_ignore` in each
 # model's tests/conftest.py. Add a model's tests dir here once it has CPU-portable tests.
-testpaths = ["tests", "models/rf3/tests", "models/rfd3/tests", "models/mpnn/tests", "models/rfd3na/tests"]
+testpaths = ["tests", "models/rf3/tests", "models/rfd3/tests", "models/mpnn/tests", "models/rfd3na/tests", "models/rfo/tests"]
 addopts = "-ra --strict-markers --strict-config"
 markers = [
     "gpu: requires CUDA or MPS GPU — skipped in CPU CI",
